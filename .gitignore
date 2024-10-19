@@ -1,0 +1,15 @@
+# Fabric
+run/
+
+# Gradle
+.gradle/
+build/
+
+# Intellij
+.idea/
+
+# Mac
+.DS_Store
+
+# kotlin
+.kotlin/

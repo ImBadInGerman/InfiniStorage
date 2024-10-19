@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "infinistorage:block/the_storage",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "infinistorage:block/the_storage",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "infinistorage:block/the_storage",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "infinistorage:block/the_storage",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "infinistorage:block/the_storage"
+    },
+    "facing=west": {
+      "model": "infinistorage:block/the_storage",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
