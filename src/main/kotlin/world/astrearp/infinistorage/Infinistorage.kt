@@ -1,7 +1,6 @@
 package world.astrearp.infinistorage
 
 import net.fabricmc.api.ModInitializer
-import net.fabricmc.fabric.api.`object`.builder.v1.block.entity.FabricBlockEntityTypeBuilder
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
@@ -12,7 +11,7 @@ import world.astrearp.infinistorage.entity.TheStorageBlockEntity
 class Infinistorage : ModInitializer {
 
     override fun onInitialize() {
-        INFINI_ENTITY_TYPE = FabricBlockEntityTypeBuilder.create(::TheStorageBlockEntity, TheStorageBlock()).build(null)
+        INFINI_ENTITY_TYPE = BlockEntityType.Builder.create(::TheStorageBlockEntity, TheStorageBlock()).build(null)
         Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             Identifier("infinistorage", "the_storage"),
