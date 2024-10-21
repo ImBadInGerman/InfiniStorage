@@ -1,7 +1,6 @@
 package world.astrearp.infinistorage.blocks
 
 import com.mojang.serialization.MapCodec
-import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
@@ -23,7 +22,7 @@ import net.minecraft.world.World
 import world.astrearp.infinistorage.entity.TheStorageBlockEntity
 
 class TheStorageBlock : BlockWithEntity(
-    FabricBlockSettings.create()
+    Settings.create()
         .mapColor(MapColor.BLUE)
         .strength(2.5F, 1200.0F)
         .sounds(BlockSoundGroup.NETHERITE)
