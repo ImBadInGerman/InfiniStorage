@@ -1,0 +1,60 @@
+name: Crash
+description: Report a crash to help us improve InfiniStorage.
+labels: [ crash ]
+body:
+  - type: textarea
+    id: error-description
+    attributes:
+      label: Describe the crash
+      description: |
+        This error message is shown in the console when the crash occurs.
+      placeholder: |
+        The server crashes with the following error message: '...'
+    validations:
+      required: true
+  - type: textarea
+    id: reproducing
+    attributes:
+      label: Steps to reproduce
+      description: What steps should we take to reproduce the issue?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin Version
+      placeholder: InfiniStorage X.Y.Z (or X.Y.Z-build_number)
+    validations:
+      required: true
+  - type: input
+    id: mc-version
+    attributes:
+      label: Minecraft Version
+      placeholder: MC X.Y.Z
+    validations:
+      required: true
+  - type: dropdown
+    id: operating-systems
+    attributes:
+      label: Operating System
+      options:
+        - macOS
+        - Windows
+        - Linux
+    validations:
+      required: true
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Before submitting a bug report
+      options:
+        - label: |
+            This bug wasn't already reported (I have searched bug reports on GitHub).
+          required: true
+        - label: |
+            This is a valid bug (I am able to reproduce this on the latest InfiniStorage build).
+          required: true
