@@ -3,15 +3,15 @@
   "id": "infinistorage",
   "version": "${version}",
   "name": "InfiniStorage",
-  "description": "",
-  "authors": [],
+  "description": "A simple infinite storage mod",
+  "authors": ["AstreaRP - Simeon"],
   "contact": {},
-  "license": "All-Rights-Reserved",
+  "license": "MIT",
   "icon": "assets/infinistorage/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "Infinistorage"
+      "world.astrearp.infinistorage.Infinistorage"
     ]
   },
   "depends": {
