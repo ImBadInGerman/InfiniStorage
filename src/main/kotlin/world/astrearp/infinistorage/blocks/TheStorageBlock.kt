@@ -29,10 +29,10 @@ class TheStorageBlock : BlockWithEntity(
 ) {
 
     init {
-        Registry.register(Registries.BLOCK, Identifier("infinistorage", "the_storage"), this)
+        Registry.register(Registries.BLOCK, Identifier.of("infinistorage", "the_storage"), this)
         Registry.register(
             Registries.ITEM,
-            Identifier("infinistorage", "the_storage"),
+            Identifier.of("infinistorage", "the_storage"),
             BlockItem(this, Item.Settings())
         )
         this.defaultState = this.stateManager.defaultState.with(FACING, Direction.DOWN)

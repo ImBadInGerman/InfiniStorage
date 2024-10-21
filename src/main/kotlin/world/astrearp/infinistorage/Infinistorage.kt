@@ -14,7 +14,7 @@ class Infinistorage : ModInitializer {
         INFINI_ENTITY_TYPE = BlockEntityType.Builder.create(::TheStorageBlockEntity, TheStorageBlock()).build(null)
         Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
-            Identifier("infinistorage", "the_storage"),
+            Identifier.of("infinistorage", "the_storage"),
             INFINI_ENTITY_TYPE
         )
     }
