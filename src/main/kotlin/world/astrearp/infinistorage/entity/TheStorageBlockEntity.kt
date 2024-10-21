@@ -17,14 +17,14 @@ class TheStorageBlockEntity(pos: BlockPos, state: BlockState) :
     BlockEntity(Infinistorage.INFINI_ENTITY_TYPE, pos, state),
     Inventory {
 
-    private var items: DefaultedList<ItemStack> = DefaultedList.ofSize(54, ItemStack.EMPTY)
+    private var items: DefaultedList<ItemStack> = DefaultedList.ofSize(1, ItemStack.EMPTY)
 
     fun listItems(player: PlayerEntity) {
         val localItems = items.filter { !it.isEmpty }
         if (localItems.isEmpty()) {
             player.sendMessage(Text.literal("Storage is empty!"), true)
         } else {
-            val message = StringBuilder("Stored items:")
+            val message = StringBuilder("Stored items (${localItems.size}/${items.size}):")
             for ((item, amount) in localItems.withIndex()) {
                 message.append("\n$item: $amount")
             }
@@ -57,17 +57,28 @@ class TheStorageBlockEntity(pos: BlockPos, state: BlockState) :
 
     override fun clear() = items.clear()
 
-    override fun size() = items.size
+    override fun size() = items.size + 1
 
     override fun isEmpty() = items.isEmpty()
 
-    override fun getStack(slot: Int) = items[slot]
+    override fun getStack(slot: Int): ItemStack {
+        if (slot < items.size) {
+            return items[slot]
+        }
+        return ItemStack.EMPTY
+    }
 
     override fun removeStack(slot: Int, amount: Int) = extractItem(slot, amount)
 
     override fun removeStack(slot: Int) = items[slot].also { items[slot] = ItemStack.EMPTY }
 
     override fun setStack(slot: Int, stack: ItemStack) {
+        // if the slot is not in the list, we need to expand it
+        if (slot >= items.size && slot + 1 < Int.MAX_VALUE) {
+            val newList = DefaultedList.ofSize(slot + 1, ItemStack.EMPTY)
+            items.forEachIndexed { index, itemStack -> newList[index] = itemStack }
+            items = newList
+        }
         items[slot] = stack
         if (stack.count > maxCountPerStack) {
             stack.count = maxCountPerStack
