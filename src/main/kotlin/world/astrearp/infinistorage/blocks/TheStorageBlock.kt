@@ -1,5 +1,6 @@
 package world.astrearp.infinistorage.blocks
 
+import com.mojang.serialization.MapCodec
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
@@ -58,6 +59,10 @@ class TheStorageBlock : BlockWithEntity(
 
     @Deprecated("Deprecated in Java")
     override fun getRenderType(state: BlockState): BlockRenderType = BlockRenderType.MODEL
+
+    override fun getCodec(): MapCodec<out TheStorageBlock> {
+        return createCodec { TheStorageBlock() }
+    }
 
     @Deprecated("Deprecated in Java")
     override fun onStateReplaced(
