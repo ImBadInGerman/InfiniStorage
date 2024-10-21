@@ -45,7 +45,6 @@ class TheStorageBlock : BlockWithEntity(
         world: World,
         pos: BlockPos,
         player: PlayerEntity,
-        hand: Hand?,
         hit: BlockHitResult
     ): ActionResult {
         if (!world.isClient) {

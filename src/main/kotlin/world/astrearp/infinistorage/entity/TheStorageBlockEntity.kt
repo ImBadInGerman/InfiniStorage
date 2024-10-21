@@ -7,6 +7,7 @@ import net.minecraft.inventory.Inventories
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.registry.RegistryWrapper
 import net.minecraft.text.Text
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.util.math.BlockPos
@@ -33,15 +34,15 @@ class TheStorageBlockEntity(pos: BlockPos, state: BlockState) :
     }
 
 
-    override fun writeNbt(tag: NbtCompound) {
-        super.writeNbt(tag)
-        Inventories.writeNbt(tag, items)
+    override fun writeNbt(nbt: NbtCompound?, registryLookup: RegistryWrapper.WrapperLookup?) {
+        super.writeNbt(nbt, registryLookup)
+        Inventories.writeNbt(nbt, items, registryLookup)
     }
 
-    override fun readNbt(tag: NbtCompound) {
-        super.readNbt(tag)
+    override fun readNbt(nbt: NbtCompound?, registryLookup: RegistryWrapper.WrapperLookup?) {
+        super.readNbt(nbt, registryLookup)
         this.items = DefaultedList.ofSize(size(), ItemStack.EMPTY)
-        Inventories.readNbt(tag, items)
+        Inventories.readNbt(nbt, items, registryLookup)
     }
 
     private fun extractItem(slot: Int, amount: Int): ItemStack {
